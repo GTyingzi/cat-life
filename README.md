@@ -4,7 +4,7 @@
 
 ## 本地运行
 
-推荐 Node.js 24（当前开发环境），使用 npm：
+使用 Node.js 24.13.1（见 `.node-version`），使用 npm：
 
 ```sh
 npm ci
@@ -22,7 +22,26 @@ npm run preview
 
 `dist/` 是完整静态部署文件，包含网页、图片、视频与素材来源页，可交给静态服务器托管。`preview` 仅用于本地验收。相对资源路径支持网站根目录或子目录部署。
 
-Sites 身份保存于 `.openai/hosting.json`；后续更新复用同一个 `project_id`，不要重复注册。按 Sites 插件流程构建、推送当前源码、保存版本并部署。首次访问范围已按用户要求设为公开。
+### GitHub 与 Cloudflare Pages
+
+目标公开仓库为 [GTyingzi/cat-life](https://github.com/GTyingzi/cat-life)。CI 在 `main` 推送、拉取请求及手动运行时依次执行 `npm ci`、`npm run lint`、`npm run build`；构建脚本包含 TypeScript 类型检查。
+
+通过 Cloudflare Pages 原生 Git 集成连接此仓库，生产分支设为 `main`，其他分支用于预览部署。项目名使用 `cat-life`；若已被占用，使用 `cat-life-zi498504`。构建设置如下：
+
+| 设置 | 值 |
+| --- | --- |
+| 构建命令 | `npm ci && npm run lint && npm run build` |
+| 输出目录 | `dist` |
+| 环境变量 `NODE_VERSION` | `24.13.1` |
+| 环境变量 `SKIP_DEPENDENCY_INSTALL` | `1` |
+
+生产和预览环境都使用上述构建设置。Pages 在构建命令中安装依赖；无需在仓库或 CI 中配置部署令牌，也无需自建服务器。`dist/` 只包含公开网页资源，本地 `.openai/`、`.idea/`、`.DS_Store`、`.env*`、`artifacts/` 和依赖目录不提交。
+
+先连接 `preview.cat-life.club`，验证页面、素材、HTTPS、双语与移动端显示，并从中国大陆网络实测访问速度及稳定性。预览域名验收后再迁移主域名；主站统一使用 `https://cat-life.club`，将 `www.cat-life.club` 重定向到主站并保留原路径和查询参数。
+
+修改主域名解析前，先备份当前 DNS 记录及原站点设置。部署内容异常时，在 Pages 中回滚到上一份已验收部署；域名迁移异常时按备份恢复原解析。原 Sites 站点保留以便核对和回退。本地 Sites 身份配置 `.openai/hosting.json` 保留在原工作目录，已从 Git 跟踪中移除；历史中的 `project_id` 是非密钥项目标识，可保留历史。
+
+当前这些内容是部署配置说明。GitHub 仓库、Pages Git 集成、预览域名与主域名的设置仍待实际配置及在线验证；本地构建成功不代表网站已部署或域名迁移完成。
 
 ## 修改入口与内容
 

@@ -24,9 +24,9 @@ npm run preview
 
 ### GitHub 与 Cloudflare Pages
 
-目标公开仓库为 [GTyingzi/cat-life](https://github.com/GTyingzi/cat-life)。CI 在 `main` 推送、拉取请求及手动运行时依次执行 `npm ci`、`npm run lint`、`npm run build`；构建脚本包含 TypeScript 类型检查。
+公开仓库为 [GTyingzi/cat-life](https://github.com/GTyingzi/cat-life)。CI 在 `main` 推送、拉取请求及手动运行时依次执行 `npm ci`、`npm run lint`、`npm run build`；构建脚本包含 TypeScript 类型检查。
 
-通过 Cloudflare Pages 原生 Git 集成连接此仓库，生产分支设为 `main`，其他分支用于预览部署。项目名使用 `cat-life`；若已被占用，使用 `cat-life-zi498504`。构建设置如下：
+Cloudflare Pages 项目 `cat-life` 已通过原生 Git 集成连接此仓库，生产分支为 `main`，其他分支自动生成预览部署。构建系统为 Version 3，构建设置如下：
 
 | 设置 | 值 |
 | --- | --- |
@@ -37,11 +37,19 @@ npm run preview
 
 生产和预览环境都使用上述构建设置。Pages 在构建命令中安装依赖；无需在仓库或 CI 中配置部署令牌，也无需自建服务器。`dist/` 只包含公开网页资源，本地 `.openai/`、`.idea/`、`.DS_Store`、`.env*`、`artifacts/` 和依赖目录不提交。
 
-先连接 `preview.cat-life.club`，验证页面、素材、HTTPS、双语与移动端显示，并从中国大陆网络实测访问速度及稳定性。预览域名验收后再迁移主域名；主站统一使用 `https://cat-life.club`，将 `www.cat-life.club` 重定向到主站并保留原路径和查询参数。
+正式站点为 [cat-life.club](https://cat-life.club/)，测试入口为 [preview.cat-life.club](https://preview.cat-life.club/)。三个自定义域名（主域名、`www`、`preview`）均已绑定 Pages 并启用 SSL；`@`、`www`、`preview` 的代理 CNAME 均指向 `cat-life.pages.dev`。测试入口绑定生产版本，用于域名与网络验收；非 `main` 分支另有各自的 Pages 预览地址。
 
-修改主域名解析前，先备份当前 DNS 记录及原站点设置。部署内容异常时，在 Pages 中回滚到上一份已验收部署；域名迁移异常时按备份恢复原解析。原 Sites 站点保留以便核对和回退。本地 Sites 身份配置 `.openai/hosting.json` 保留在原工作目录，已从 Git 跟踪中移除；历史中的 `project_id` 是非密钥项目标识，可保留历史。
+Cloudflare Single Redirect 规则只匹配 `www.cat-life.club`，将 HTTP 和 HTTPS 请求以 308 永久跳转到 `https://cat-life.club`，保留路径和查询参数。独立测试域名已由用户在此前失败的同一国内手机网络中确认页面、图片和视频正常，随后完成正式域名切换；用户随后在同一国内手机网络中确认主域名和 `www` 均正常，且 `www` 跳转正确。国内可访问性仍以实际网络测试为准。
 
-当前这些内容是部署配置说明。GitHub 仓库、Pages Git 集成、预览域名与主域名的设置仍待实际配置及在线验证；本地构建成功不代表网站已部署或域名迁移完成。
+首次切换前的 DNS 备份保存在本地 `artifacts/deployment/cat-life-before-cutover.zone`（不公开提交）。原 Sites 站点 [cats-life.zi498504.chatgpt.site](https://cats-life.zi498504.chatgpt.site/) 及原自定义域名绑定保留，本地 `.openai/hosting.json` 已停止跟踪但仍保存在原工作目录；历史 `project_id` 是非密钥项目标识。
+
+回滚网站版本：在 Cloudflare 控制台 → Workers & Pages → `cat-life` → Deployments，选择上一份已验收的生产部署执行 Rollback；回滚后还需撤销错误源码提交并推送，避免下一次自动部署重新引入问题。
+
+首次域名切换回退：先停用 `www.cat-life.club to cat-life.club` 跳转规则，再移除根域名的 Pages CNAME，恢复备份中两条 DNS only A 记录（`172.66.3.26`、`162.159.143.30`），将 `www` 的代理 CNAME 恢复为 `custom-domains.chatgpt.site`，核对原 Sites 自定义域名状态与访问。保留原验证 TXT 记录和独立测试域名，不直接重复导入整份备份，以免覆盖后续新增记录。
+
+后续发布：修改内容后先运行 `npm run lint && npm run build`，提交并推送 `main` 即自动更新正式站点；分支推送仅更新预览。查看 [GitHub Actions](https://github.com/GTyingzi/cat-life/actions) 的 CI 结果及 Cloudflare Deployments 中相同提交 SHA 的生产部署状态，确认发布成功后检查正式域名。Pages 自身也执行安装、lint 和类型检查/构建，任一步失败都不会发布新版本。
+
+2026-10-04 验证记录：本地 lint、类型检查和构建，以及线上 CI、首次 Pages 生产部署均通过；22 个静态文件在测试域名及主域名上均返回 200，且与本地构建 SHA-256 一致。桌面和 390px 手机布局中英文切换正常，视频播放至结束。一次临时分支故障测试确认 CI 在 lint 失败后跳过构建，Pages 同时拒绝发布，现有生产版本继续可访问；恢复分支后 CI 和预览部署重新成功。本地截图、资源校验和流水线证据位于 `artifacts/deployment/`。
 
 ## 修改入口与内容
 

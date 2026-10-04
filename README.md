@@ -83,3 +83,20 @@ Cloudflare Single Redirect 规则只匹配 `www.cat-life.club`，将 HTTP 和 HT
 ## 验收记录
 
 中英桌面与手机截图，以及浏览器验收结果保存在本地 `artifacts/`（不参与公开部署）。社群和店铺当前未提供真实入口，因此公开页面保持“即将开放”。
+
+## 猫咪生活问答知识库
+
+`knowledge.html` 是独立静态页面，与首页一起构建到 `dist/`，沿用现有 Cloudflare Pages 自动部署。首页导航和视频后的主题入口可进入知识页；例如 `knowledge.html#topic-sleep` 打开睡眠分类，`knowledge.html#qa-cat-purring` 打开对应问答。
+
+`src/knowledge/content.ts` 统一导出分类、界面文案和问答；完整双语文章维护在同目录的 `articles.ts`，类型见 `types.ts`。修改问答时同时更新 `zh-CN` 和 `en`，两种语言须保留一致的含义、判断强度和行动建议：
+
+- `id` 是稳定链接标识，不随标题或翻译修改；UI 自动加 `qa-` 前缀。
+- `category` 使用八个现有主题 ID，每个主题当前五条。
+- 每种语言包含问题、简短回答、常见原因、2–4 条行动和搜索关键词；仅必要时加入 `watch` 健康提示。
+- `sources` 使用直接支持答案的 HTTPS 来源和标题，`reviewedAt` 填实际核对日期。涉及健康判断须交叉核对权威资料；不提供用药、剂量或远程诊断。`urgent` 标示需要立即就医的情况。
+- 搜索只匹配当前语言的正文、问题和关键词，多个空格分隔的词须全部匹配；分类与搜索同时生效。切换语言保留输入、分类及已展开条目，结果根据新语言重新计算。
+- 单条分享链接和主题链接在刷新后仍可恢复对应内容。新增内容时保持已有 ID，调整内容校验的总数、每类数量约束；页面数量自动从数据计算。
+
+提交前运行 `npm test`、`npm run lint`、`npm run build`。`npm run check:knowledge` 单独检查数量、双语完整性、ID、来源和日期；自动测试和内容校验都由构建脚本执行，所以现有 GitHub CI 和 Cloudflare 都会运行这些检查，并拒绝不完整的内容。参考资料应在内容修改时重新阅读，不把旧核对日期自动更新为今天。
+
+本地用 `npm run dev` 或构建后 `npm run preview`，访问 `/knowledge.html`。Node 原生测试无需新增测试框架；页面交互、来源内容是否准确、中英一致性仍需人工或浏览器验收。

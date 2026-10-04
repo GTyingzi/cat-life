@@ -3,4 +3,4 @@ import globals from 'globals';
 import tseslint from 'typescript-eslint';
 import hooks from 'eslint-plugin-react-hooks';
 import refresh from 'eslint-plugin-react-refresh';
-export default tseslint.config({ ignores: ['dist', 'artifacts'] }, js.configs.recommended, ...tseslint.configs.recommended, { files: ['scripts/*.mjs'], languageOptions: { globals: globals.node } }, { files: ['**/*.{ts,tsx}'], languageOptions: { globals: globals.browser }, plugins: { 'react-hooks': hooks, 'react-refresh': refresh }, rules: { ...hooks.configs.recommended.rules, 'react-refresh/only-export-components': ['warn', { allowConstantExport: true }] } });
+export default tseslint.config({ ignores: ['dist', 'artifacts'] }, js.configs.recommended, ...tseslint.configs.recommended, { files: ['scripts/*.mjs', 'tests/*.mjs'], languageOptions: { globals: globals.node } }, { files: ['**/*.{ts,tsx}'], languageOptions: { globals: globals.browser }, plugins: { 'react-hooks': hooks, 'react-refresh': refresh }, rules: { ...hooks.configs.recommended.rules, 'react-refresh/only-export-components': ['warn', { allowConstantExport: true }] } });

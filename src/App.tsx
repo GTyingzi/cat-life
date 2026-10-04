@@ -1,21 +1,17 @@
 import { useEffect, useRef, useState } from 'react';
 import { Heart, PawPrint, ShoppingBag, Users, X } from 'lucide-react';
-import { copy, siteContent, type Entrance, type Locale } from './content';
+import { copy, siteContent, type Entrance } from './content';
 import Products from './Products';
 import { mediaUrl, safeLink } from './links';
-function initialLocale(): Locale { try { return localStorage.getItem('everyday-cats-language') === 'en' ? 'en' : 'zh-CN'; } catch { return 'zh-CN'; } }
+import { useLocale } from './useLocale';
+import { SiteHeader, SiteFooter } from './SiteChrome';
+import KnowledgeEntry from './knowledge/KnowledgeEntry';
 
 export default function App() {
-  const [locale, setLocale] = useState<Locale>(initialLocale);
+  const [locale, setLocale] = useLocale(copy);
   const [qr, setQr] = useState<string>();
   const dialog = useRef<HTMLDialogElement>(null);
   const c = copy[locale];
-  useEffect(() => {
-    document.documentElement.lang = locale;
-    document.title = c.title;
-    document.querySelector('meta[name="description"]')?.setAttribute('content', c.description);
-    try { localStorage.setItem('everyday-cats-language', locale); } catch { /* Preference storage is optional. */ }
-  }, [locale, c]);
   useEffect(() => { if (qr) dialog.current?.showModal(); else dialog.current?.close(); }, [qr]);
 
   const renderEntrance = (entry: Entrance, community: boolean) => {
@@ -29,10 +25,7 @@ export default function App() {
   };
   return <>
     <a className="skip-link" href="#main">{c.skip}</a>
-    <header className="header"><a className="brand" href="#"><PawPrint size={25} strokeWidth={1.8}/><span>{siteContent.brand[locale]}</span></a>
-      <nav aria-label={locale === 'en' ? 'Main navigation' : '主导航'}><a href="#daily">{c.navDaily}</a><a href="#moment">{c.navMoment}</a><a href="#products">{c.navProducts}</a><a href="#connect">{c.navConnect}</a></nav>
-      <div className="language-switch" role="group" aria-label={c.language}><button aria-pressed={locale === 'zh-CN'} onClick={() => setLocale('zh-CN')}>中文</button><span aria-hidden="true">/</span><button aria-pressed={locale === 'en'} onClick={() => setLocale('en')}>EN</button></div>
-    </header>
+    <SiteHeader locale={locale} setLocale={setLocale}/>
     <main id="main">
       <section className="hero">
         <div className="hero-copy"><h1>{c.heroTitle}</h1><p>{c.heroDescription}</p><div className="hero-actions"><a className="button primary" href="#connect">{c.join}</a><a className="button secondary" href="#shops">{c.shop}</a></div><div className="hero-note"><Heart size={16} strokeWidth={1.6}/><span>{c.heroNote}</span></div></div>
@@ -44,10 +37,11 @@ export default function App() {
       <section id="moment" className="moment section"><div className="moment-copy"><PawPrint className="moment-paw" size={32} strokeWidth={1.3}/><h2>{c.momentTitle}</h2><p>{c.momentDescription}</p><span className="moment-title">{siteContent.video.title[locale]}</span></div>
         <div className="video-frame"><video controls playsInline preload="none" poster={mediaUrl(siteContent.video.poster)} aria-label={c.playLabel}><source src={mediaUrl(siteContent.video.src)} type="video/mp4"/>{c.videoFallback}</video></div>
       </section>
+      <KnowledgeEntry locale={locale}/>
       <Products locale={locale}/>
       <section id="connect" className="connect section"><div className="section-heading"><h2>{c.connectTitle}</h2><p>{c.connectDescription}</p></div><div className="entrances">{renderEntrance(siteContent.community, true)}<div id="shops" className="shop-list">{siteContent.shops.map(entry => renderEntrance(entry, false))}</div></div></section>
     </main>
-    <footer className="footer"><div><a className="brand" href="#"><PawPrint size={23}/><span>{siteContent.brand[locale]}</span></a><p>{c.footerLine}</p></div><div className="footer-meta"><span>© {new Date().getFullYear()} {c.copyright}</span><a href={mediaUrl('credits.html')} target="_blank" rel="noopener noreferrer">{c.credits}</a><small>{c.sampleNote}</small></div></footer>
+    <SiteFooter locale={locale}/>
     <dialog ref={dialog} className="qr-dialog" onCancel={() => setQr(undefined)} onClose={() => setQr(undefined)} onClick={event => { if (event.target === event.currentTarget) setQr(undefined); }} aria-labelledby="qr-title"><button className="dialog-close" onClick={() => setQr(undefined)} aria-label={c.close}><X size={23}/></button><h2 id="qr-title">{c.viewQr}</h2>{qr && <img src={qr} alt={c.qrAlt}/>}</dialog>
   </>;
 }

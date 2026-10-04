@@ -47,7 +47,7 @@ export const siteContent = {
 export const copy = {
   'zh-CN': {
     title: '猫咪日常 · 和猫一起，把日子过慢一点', description: '记录猫咪的小日常，分享有猫相伴的生活。社群与店铺即将开放。',
-    skip: '跳转到正文', navDaily: '小日常', navMoment: '猫咪时刻', navProducts: '商品与服务', navConnect: '社群与店铺', language: '选择语言',
+    skip: '跳转到正文', navDaily: '小日常', navMoment: '猫咪时刻', navKnowledge: '猫咪问答', navProducts: '商品与服务', navConnect: '社群与店铺', language: '选择语言',
     heroTitle: '和猫一起，\n把日子过慢一点。', heroDescription: '晒晒太阳，伸个懒腰。\n记录那些有猫相伴的，平凡又可爱的瞬间。', join: '加入社群', shop: '逛逛店铺',
     heroNote: '日子很普通，有猫就很可爱。', dailyTitle: '猫咪的小日常', dailyDescription: '不用特别安排，每一天都有值得留下的小片刻。',
     momentTitle: '这一刻，刚刚好。', momentDescription: '让世界安静一会儿，看看猫咪在忙什么。', videoFallback: '你的浏览器无法播放此视频。',
@@ -57,7 +57,7 @@ export const copy = {
   },
   en: {
     title: 'Everyday Cats · A slower life, with cats', description: 'Little moments and a life shared with cats. Community and shop links coming soon.',
-    skip: 'Skip to content', navDaily: 'Little moments', navMoment: 'In motion', navProducts: 'Products & services', navConnect: 'Community & shops', language: 'Choose language',
+    skip: 'Skip to content', navDaily: 'Little moments', navMoment: 'In motion', navKnowledge: 'Cat Q&A', navProducts: 'Products & services', navConnect: 'Community & shops', language: 'Choose language',
     heroTitle: 'A slower life,\nwith cats.', heroDescription: 'A patch of sunshine. A sleepy stretch.\nThe little things that make life with cats so lovely.', join: 'Join the community', shop: 'Explore the shops',
     heroNote: 'Ordinary days. Extraordinary little companions.', dailyTitle: 'The everyday, with cats', dailyDescription: 'No grand plans. Just little moments worth keeping.',
     momentTitle: 'Right here. Right meow.', momentDescription: 'Let the world slow down. See what the cat is up to.', videoFallback: 'Your browser cannot play this video.',

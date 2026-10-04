@@ -1,0 +1,185 @@
+{
+  "created_date": "2026-10-04",
+  "provider": "Pexels",
+  "license_url": "https://www.pexels.com/license/",
+  "license_summary": "Pexels official license allows free website use and modifications; attribution appreciated but not required.",
+  "asset_count": {
+    "photos": 6,
+    "videos": 1,
+    "posters": 1
+  },
+  "access_notes": "Short numeric source-page URLs and curl HTML requests were blocked by Cloudflare (403). Full canonical Pexels pages were accessible through web tool; official Free download links yielded real Pexels CDN URLs. All media downloaded from those observed official links. Photo 11274114 current source-page credit is Alina Vilchenko; historical CDN filename contains monstera.",
+  "assets": [
+    {
+      "file": "cat-01.webp",
+      "type": "image",
+      "pexels_id": 17543729,
+      "source_page": "https://www.pexels.com/photo/cat-sleeping-by-the-window-17543729/",
+      "author": "Ahmet Eymen Aktaş",
+      "license_url": "https://www.pexels.com/license/",
+      "download_url": "https://images.pexels.com/photos/17543729/pexels-photo-17543729.jpeg?cs=srgb&dl=pexels-eymen-17543729.jpg&fm=jpg",
+      "width": 1600,
+      "height": 1067,
+      "bytes": 110994,
+      "sha256": "d84258ecda32cbd3e386f56efeb18a79d038ea56e4dfa50a6a954b4a864d6667",
+      "alt_zh": "窗边熟睡的虎斑猫",
+      "usage_notes": "hero; warm-brown natural-light sleeping cat, landscape",
+      "verified": {
+        "download": true,
+        "decoded": true,
+        "visual_review": true
+      },
+      "processing": "RGB WebP quality 84, Lanczos resize, no crop or synthetic modifications"
+    },
+    {
+      "file": "cat-02.webp",
+      "type": "image",
+      "pexels_id": 30547186,
+      "source_page": "https://www.pexels.com/photo/cozy-sleeping-black-cat-on-a-sunny-day-30547186/",
+      "author": "Sandin Redzo",
+      "license_url": "https://www.pexels.com/license/",
+      "download_url": "https://images.pexels.com/photos/30547186/pexels-photo-30547186.jpeg?cs=srgb&dl=pexels-sandin-redzo-1780184288-30547186.jpg&fm=jpg",
+      "width": 600,
+      "height": 900,
+      "bytes": 32250,
+      "sha256": "e65fd2a4c6eaac57e9c57b3e16119607e1ecb6e1cb812667e9ea829026ee2f06",
+      "alt_zh": "阳光下打盹的黑猫",
+      "usage_notes": "portrait; creamy window light",
+      "verified": {
+        "download": true,
+        "decoded": true,
+        "visual_review": true
+      },
+      "processing": "RGB WebP quality 84, Lanczos resize, no crop or synthetic modifications"
+    },
+    {
+      "file": "cat-03.webp",
+      "type": "image",
+      "pexels_id": 20142443,
+      "source_page": "https://www.pexels.com/photo/ginger-cat-sitting-on-windowsill-20142443/",
+      "author": "BURAK SAY",
+      "license_url": "https://www.pexels.com/license/",
+      "download_url": "https://images.pexels.com/photos/20142443/pexels-photo-20142443.jpeg?cs=srgb&dl=pexels-bsaydng-20142443.jpg&fm=jpg",
+      "width": 900,
+      "height": 600,
+      "bytes": 52322,
+      "sha256": "467ae46736dde6b756dae2ef4157a4f83e8130c37c66678bbd90344ded47622c",
+      "alt_zh": "绿植窗台上的橘猫",
+      "usage_notes": "landscape; orange cat with sage-green plants",
+      "verified": {
+        "download": true,
+        "decoded": true,
+        "visual_review": true
+      },
+      "processing": "RGB WebP quality 84, Lanczos resize, no crop or synthetic modifications"
+    },
+    {
+      "file": "cat-04.webp",
+      "type": "image",
+      "pexels_id": 11274114,
+      "source_page": "https://www.pexels.com/photo/photo-of-a-cat-in-a-room-11274114/",
+      "author": "Alina Vilchenko",
+      "license_url": "https://www.pexels.com/license/",
+      "download_url": "https://images.pexels.com/photos/11274114/pexels-photo-11274114.jpeg?cs=srgb&dl=pexels-monstera-11274114.jpg&fm=jpg",
+      "width": 598,
+      "height": 900,
+      "bytes": 49280,
+      "sha256": "e4973fa5587e69cdd4721206b55d8ed752e5bd3f4f3bb073fdb322398f1727d8",
+      "alt_zh": "暖色居家空间里的灰猫",
+      "usage_notes": "portrait; soft background of plants and wood",
+      "verified": {
+        "download": true,
+        "decoded": true,
+        "visual_review": true
+      },
+      "processing": "RGB WebP quality 84, Lanczos resize, no crop or synthetic modifications"
+    },
+    {
+      "file": "cat-05.webp",
+      "type": "image",
+      "pexels_id": 30765725,
+      "source_page": "https://www.pexels.com/photo/fluffy-calico-cat-playing-indoors-with-toy-30765725/",
+      "author": "Huy Phan",
+      "license_url": "https://www.pexels.com/license/",
+      "download_url": "https://images.pexels.com/photos/30765725/pexels-photo-30765725.jpeg?cs=srgb&dl=pexels-huy-phan-316220-30765725.jpg&fm=jpg",
+      "width": 900,
+      "height": 638,
+      "bytes": 75204,
+      "sha256": "0adb0581cb8488780899a342f87257f9fc1d84d575ce618f83d3ad05a42dd202",
+      "alt_zh": "和玩具互动的三花猫",
+      "usage_notes": "landscape; playtime in natural light",
+      "verified": {
+        "download": true,
+        "decoded": true,
+        "visual_review": true
+      },
+      "processing": "RGB WebP quality 84, Lanczos resize, no crop or synthetic modifications"
+    },
+    {
+      "file": "cat-06.webp",
+      "type": "image",
+      "pexels_id": 37110805,
+      "source_page": "https://www.pexels.com/photo/playful-tabby-cat-indoors-reaching-for-feather-toy-37110805/",
+      "author": "Kimberly Alves",
+      "license_url": "https://www.pexels.com/license/",
+      "download_url": "https://images.pexels.com/photos/37110805/pexels-photo-37110805.jpeg?cs=srgb&dl=pexels-kimberly-alves-2160417495-37110805.jpg&fm=jpg",
+      "width": 600,
+      "height": 900,
+      "bytes": 60112,
+      "sha256": "29a4c1b21f5bd934182241be49cf7e061bfebc44f80108de280cda8222c4cdf7",
+      "alt_zh": "望着逗猫棒的虎斑猫",
+      "usage_notes": "portrait; feather toy and warm-brown furniture",
+      "verified": {
+        "download": true,
+        "decoded": true,
+        "visual_review": true
+      },
+      "processing": "RGB WebP quality 84, Lanczos resize, no crop or synthetic modifications"
+    },
+    {
+      "file": "cat-moment.mp4",
+      "type": "video",
+      "pexels_id": 20738332,
+      "source_page": "https://www.pexels.com/video/cat-grooming-20738332/",
+      "author": "Dustin Kilian",
+      "license_url": "https://www.pexels.com/license/",
+      "download_url": "https://videos.pexels.com/video-files/20738332/20738332-uhd_2160_3840_24fps.mp4",
+      "width": 720,
+      "height": 1280,
+      "duration_seconds": 17.541667,
+      "bytes": 2246215,
+      "sha256": "240b3fce961b9732b6033788edc4b601b1a4f65ee59cca349d5fd4c0566dde1f",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "fps": 24,
+      "audio": false,
+      "poster": "cat-moment-poster.webp",
+      "alt_zh": "布偶猫在床上舔爪整理毛发",
+      "verified": {
+        "download": true,
+        "decoded": true,
+        "visual_review": true,
+        "review_frames_seconds": [
+          0,
+          3,
+          8,
+          15
+        ]
+      },
+      "processing": "Scaled from original 2160x3840; H.264 CRF25; audio removed; faststart; original duration retained"
+    },
+    {
+      "file": "cat-moment-poster.webp",
+      "type": "poster",
+      "derived_from": "cat-moment.mp4",
+      "source_frame_seconds": 3,
+      "source_page": "https://www.pexels.com/video/cat-grooming-20738332/",
+      "author": "Dustin Kilian",
+      "license_url": "https://www.pexels.com/license/",
+      "width": 720,
+      "height": 1280,
+      "bytes": 27944,
+      "sha256": "1146220534b4df4bdf80a1d8ee479785c62aa1ae18d8a7859eb16bebdbeb1b8c"
+    }
+  ]
+}

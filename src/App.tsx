@@ -1,9 +1,8 @@
 import { useEffect, useRef, useState } from 'react';
 import { Heart, PawPrint, ShoppingBag, Users, X } from 'lucide-react';
 import { copy, siteContent, type Entrance, type Locale } from './content';
-
-const mediaUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`;
-const safeLink = (url?: string) => { if (!url) return undefined; try { const parsed = new URL(url); return ['https:', 'http:'].includes(parsed.protocol) ? parsed.href : undefined; } catch { return undefined; } };
+import Products from './Products';
+import { mediaUrl, safeLink } from './links';
 function initialLocale(): Locale { try { return localStorage.getItem('everyday-cats-language') === 'en' ? 'en' : 'zh-CN'; } catch { return 'zh-CN'; } }
 
 export default function App() {
@@ -31,7 +30,7 @@ export default function App() {
   return <>
     <a className="skip-link" href="#main">{c.skip}</a>
     <header className="header"><a className="brand" href="#"><PawPrint size={25} strokeWidth={1.8}/><span>{siteContent.brand[locale]}</span></a>
-      <nav aria-label={locale === 'en' ? 'Main navigation' : '主导航'}><a href="#daily">{c.navDaily}</a><a href="#moment">{c.navMoment}</a><a href="#connect">{c.navConnect}</a></nav>
+      <nav aria-label={locale === 'en' ? 'Main navigation' : '主导航'}><a href="#daily">{c.navDaily}</a><a href="#moment">{c.navMoment}</a><a href="#products">{c.navProducts}</a><a href="#connect">{c.navConnect}</a></nav>
       <div className="language-switch" role="group" aria-label={c.language}><button aria-pressed={locale === 'zh-CN'} onClick={() => setLocale('zh-CN')}>中文</button><span aria-hidden="true">/</span><button aria-pressed={locale === 'en'} onClick={() => setLocale('en')}>EN</button></div>
     </header>
     <main id="main">
@@ -45,6 +44,7 @@ export default function App() {
       <section id="moment" className="moment section"><div className="moment-copy"><PawPrint className="moment-paw" size={32} strokeWidth={1.3}/><h2>{c.momentTitle}</h2><p>{c.momentDescription}</p><span className="moment-title">{siteContent.video.title[locale]}</span></div>
         <div className="video-frame"><video controls playsInline preload="none" poster={mediaUrl(siteContent.video.poster)} aria-label={c.playLabel}><source src={mediaUrl(siteContent.video.src)} type="video/mp4"/>{c.videoFallback}</video></div>
       </section>
+      <Products locale={locale}/>
       <section id="connect" className="connect section"><div className="section-heading"><h2>{c.connectTitle}</h2><p>{c.connectDescription}</p></div><div className="entrances">{renderEntrance(siteContent.community, true)}<div id="shops" className="shop-list">{siteContent.shops.map(entry => renderEntrance(entry, false))}</div></div></section>
     </main>
     <footer className="footer"><div><a className="brand" href="#"><PawPrint size={23}/><span>{siteContent.brand[locale]}</span></a><p>{c.footerLine}</p></div><div className="footer-meta"><span>© {new Date().getFullYear()} {c.copyright}</span><a href={mediaUrl('credits.html')} target="_blank" rel="noopener noreferrer">{c.credits}</a><small>{c.sampleNote}</small></div></footer>

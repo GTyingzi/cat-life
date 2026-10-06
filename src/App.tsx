@@ -15,7 +15,7 @@ export default function App() {
     return <article className="entrance shop-card" key={entry.id}>
       <div className="entrance-top"><span className="entrance-icon"><ShoppingBag size={25} strokeWidth={1.5}/></span><span className="entrance-label">{c.shopLabel}</span></div>
       <h3>{entry.name[locale]}</h3><p>{entry.description[locale]}</p>
-      <div className="entrance-action">{url ? <a className="button" href={url} target="_blank" rel="noopener noreferrer">{c.enterShop}</a> : <span className="coming-soon">{c.soon}</span>}</div>
+      <div className="entrance-action">{url ? <a className="button" href={url} target="_blank" rel="noopener noreferrer">{entry.status === 'opening-soon' ? c.previewShop : c.enterShop}</a> : <span className="coming-soon">{c.soon}</span>}</div>
     </article>;
   };
   return <>

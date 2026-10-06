@@ -1,7 +1,7 @@
 export type Locale = 'zh-CN' | 'en';
 export type Localized = Record<Locale, string>;
 export interface GalleryItem { src: string; caption: Localized; alt: Localized }
-export interface Entrance { id: string; name: Localized; description: Localized; url?: string }
+export interface Entrance { id: string; name: Localized; description: Localized; url?: string; status?: 'opening-soon' }
 export interface ProductItem {
   id: string;
   name: Localized;
@@ -40,7 +40,7 @@ export const siteContent = {
     { id: 'meow-app', name: bi('猫叫识别 App', 'Cat vocalization app'), image: 'media/service-meow.webp', alt: bi('正在叫的小猫，用于猫叫识别软件方向示意', 'A vocal kitten illustrating the cat vocalization app direction'), action: 'download', url: undefined, objectPosition: '50% 40%' },
     { id: 'collar-app', name: bi('项圈等硬件 + App', 'Collar hardware + app'), image: 'media/service-collar.webp', alt: bi('佩戴普通项圈的猫咪，用于硬件与配套软件方向示意', 'A cat wearing an ordinary collar, illustrating hardware and companion software'), action: 'purchase', url: undefined, objectPosition: '50% 65%' },
   ] satisfies ProductItem[],
-  shops: [{ id: 'shop', name: bi('猫咪日常店铺', 'Everyday Cats shop'), description: bi('猫咪日常用品，店铺入口即将开放。', 'Everyday essentials for cats. Shop links are on their way.'), url: undefined }] as Entrance[],
+  shops: [{ id: 'shopify', name: bi('猫咪日常店铺', 'Everyday Cats shop'), description: bi('猫咪用品店铺正在筹备，正式商品上架后将在这里与你见面。', 'Our cat essentials shop is taking shape. Products will be available when we launch.'), url: 'https://shop.cat-life.club/', status: 'opening-soon' }] as Entrance[],
 };
 
 export const copy = {
@@ -51,7 +51,7 @@ export const copy = {
     heroNote: '日子很普通，有猫就很可爱。', dailyTitle: '猫咪的小日常', dailyDescription: '不用特别安排，每一天都有值得留下的小片刻。',
     momentTitle: '这一刻，刚刚好。', momentDescription: '让世界安静一会儿，看看猫咪在忙什么。', videoFallback: '你的浏览器无法播放此视频。',
     productsTitle: '猫咪商品与服务', productsNote: '图片为方向示意，商品详情与购买、下载入口待提供。', physicalTitle: '实体用品', servicesTitle: '软件与设备', purchasePending: '购买地址待提供', downloadPending: '下载地址待提供', purchase: '前往购买', download: '前往下载',
-    shopsTitle: '为猫咪，找些日常好物。', shopsDescription: '店铺入口即将开放，期待与你分享猫咪日常用品。', shopLabel: '店铺入口', soon: '即将开放', enterShop: '进入店铺',
+    shopsTitle: '为猫咪，找些日常好物。', shopsDescription: '期待与你分享猫咪日常用品，店铺正在筹备中。', shopLabel: '店铺入口', soon: '即将开放', enterShop: '进入店铺', previewShop: '查看店铺筹备页',
     footerLine: '有猫相伴，日常也值得珍藏。', credits: '素材来源', sampleNote: '页面图片与视频为示例素材。', copyright: '猫咪日常', playLabel: '猫咪日常视频',
   },
   en: {
@@ -61,7 +61,7 @@ export const copy = {
     heroNote: 'Ordinary days. Extraordinary little companions.', dailyTitle: 'The everyday, with cats', dailyDescription: 'No grand plans. Just little moments worth keeping.',
     momentTitle: 'Right here. Right meow.', momentDescription: 'Let the world slow down. See what the cat is up to.', videoFallback: 'Your browser cannot play this video.',
     productsTitle: 'Products & services for cats', productsNote: 'Illustrative images only. Product details and purchase or download links are pending.', physicalTitle: 'Everyday essentials', servicesTitle: 'Software & devices', purchasePending: 'Purchase link pending', downloadPending: 'Download link pending', purchase: 'Visit purchase page', download: 'Visit download page',
-    shopsTitle: 'Everyday finds for cats.', shopsDescription: 'Our shop links are coming soon. Explore everyday essentials for cats.', shopLabel: 'Our shops', soon: 'Coming soon', enterShop: 'Visit the shop',
+    shopsTitle: 'Everyday finds for cats.', shopsDescription: 'Our shop is taking shape. Everyday essentials for cats are coming soon.', shopLabel: 'Our shops', soon: 'Coming soon', enterShop: 'Visit the shop', previewShop: 'View our upcoming shop',
     footerLine: 'Little moments. A life shared with cats.', credits: 'Photo & video credits', sampleNote: 'Photos and video are sample imagery.', copyright: 'Everyday Cats', playLabel: 'An everyday cat video',
   },
 } satisfies Record<Locale, Record<string, string>>;

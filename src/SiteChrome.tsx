@@ -10,7 +10,7 @@ export function SiteHeader({ locale, setLocale, knowledge = false }: { locale: L
     <nav aria-label={locale === 'en' ? 'Main navigation' : '主导航'}>
       <a href={`${home}#daily`}>{c.navDaily}</a><a href={`${home}#moment`}>{c.navMoment}</a>
       <a href={mediaUrl('knowledge.html')} aria-current={knowledge ? 'page' : undefined}>{c.navKnowledge}</a>
-      <a href={`${home}#products`}>{c.navProducts}</a><a href={`${home}#connect`}>{c.navConnect}</a>
+      <a href={`${home}#products`}>{c.navProducts}</a><a href={`${home}#shops`}>{c.navShops}</a>
     </nav>
     <div className="language-switch" role="group" aria-label={c.language}>
       <button aria-pressed={locale === 'zh-CN'} onClick={() => setLocale('zh-CN')}>中文</button><span aria-hidden="true">/</span>

@@ -56,15 +56,13 @@ Cloudflare Single Redirect 规则只匹配 `www.cat-life.club`，将 HTTP 和 HT
 编辑 `src/content.ts`：
 
 - `siteContent.brand`：中文与英文品牌名。
-- `siteContent.community.url`：真实社群网页链接，替换 `undefined`。
-- `siteContent.community.qr`：社群二维码的本地路径，例如 `media/community-qr.png`。先将图片放入 `public/media/`。
 - `siteContent.shops`：可增加多个平台店铺；每项设置唯一 `id`、中英文 `name` / `description` 和真实 `url`。
 - `siteContent.gallery` / `video`：照片、短视频、封面及中英文说明。
 - `siteContent.physicalProducts`：六类实体用品卡片，食碗、猫玩具、猫窝、猫抓板／猫爬架、猫砂盆、外出包。
 - `siteContent.softwareAndDevices`：猫叫识别 App、项圈等硬件 + App 的方向卡片。
 - `copy`：全部界面文案。每次编辑同步维护 `zh-CN` 和 `en`。
 
-链接接受 http/https；未配置或无效时显示“即将开放 / Coming soon”。社群只有二维码时提供二维码查看按钮；链接与二维码可并存。所有真实入口须在公开部署前检查。内容修改后重新构建部署。
+链接接受 http/https；未配置或无效时显示“即将开放 / Coming soon”。所有真实入口须在公开部署前检查。内容修改后重新构建部署。
 
 商品和服务的每项配置包含 `id`、中英文 `name`、`image`、中英文 `alt`、`action` 与可选 `url`。`action` 为 `purchase` 或 `download`；`url` 空缺或无效时显示相应待提供状态，有效 http/https 链接才会显示购买／下载入口，在新标签页打开。图片只作方向示意，不代表真实上架产品；更换成实际产品后请同步调整区域说明。
 
@@ -82,7 +80,7 @@ Cloudflare Single Redirect 规则只匹配 `www.cat-life.club`，将 HTTP 和 HT
 
 ## 验收记录
 
-中英桌面与手机截图，以及浏览器验收结果保存在本地 `artifacts/`（不参与公开部署）。社群和店铺当前未提供真实入口，因此公开页面保持“即将开放”。
+中英桌面与手机截图，以及浏览器验收结果保存在本地 `artifacts/`（不参与公开部署）。社群入口已移除；店铺当前未提供真实入口，因此公开页面保持“即将开放”。
 
 ## 猫咪生活问答知识库
 
@@ -100,3 +98,7 @@ Cloudflare Single Redirect 规则只匹配 `www.cat-life.club`，将 HTTP 和 HT
 提交前运行 `npm test`、`npm run lint`、`npm run build`。`npm run check:knowledge` 单独检查数量、双语完整性、ID、来源和日期；自动测试和内容校验都由构建脚本执行，所以现有 GitHub CI 和 Cloudflare 都会运行这些检查，并拒绝不完整的内容。参考资料应在内容修改时重新阅读，不把旧核对日期自动更新为今天。
 
 本地用 `npm run dev` 或构建后 `npm run preview`，访问 `/knowledge.html`。Node 原生测试无需新增测试框架；页面交互、来源内容是否准确、中英一致性仍需人工或浏览器验收。
+
+## 电商迭代
+
+当前站点仍是商品展示与内容站，尚无站内下单、支付、库存或订单后台。面向国内及东南亚的迭代范围、关键注意点和上线条件见 [电商独立站迭代说明](docs/ecommerce-roadmap.zh-CN.md)。
